@@ -1,0 +1,24 @@
+# Copy this file to terraform.tfvars and customize values
+
+resource_group_name = "studiodrop-rg"
+location            = "eastus"
+environment         = "prod"
+project_name        = "studiodrop"
+
+# AKS Configuration
+aks_node_count = 2
+aks_node_size  = "Standard_B2s"
+
+# PostgreSQL Configuration
+postgres_sku        = "B_Standard_B1ms"
+postgres_storage_mb = 32768
+
+# Domain (optional)
+domain_name = "studiodrop.example.com"
+
+# Tags
+tags = {
+  Project     = "STUDIODROP"
+  Environment = "Production"
+  ManagedBy   = "Terraform"
+}

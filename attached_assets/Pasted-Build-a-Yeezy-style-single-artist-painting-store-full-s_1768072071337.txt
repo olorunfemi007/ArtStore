@@ -1,0 +1,70 @@
+Build a Yeezy-style single-artist painting store (full stack, production-ready)
+You are a senior full-stack engineer + product architect. Build a production-ready web app called StudioDrop: a minimalist, high-end storefront inspired by Yeezy.com’s clean “drop” aesthetic, but selling one artist’s paintings and prints. This is not a marketplace. There is one official artist/brand and only the admin can add/edit artworks, drops, and content. Deliver the entire system: frontend, backend, database, admin, payments, shipping, SEO, security, tests, and deployment.
+1) Roles & access
+* Guest: browse, search, view artwork details.
+* Customer: account (optional), wishlist, cart, checkout, order history, addresses.
+* Admin (you): full control of artworks, images, pricing, drops, CMS blocks, orders, refunds.
+No artist signup, no multi-vendor payouts.
+2) UX & pages (Yeezy-like)
+Design: premium minimal, monochrome, big imagery, whitespace, fast transitions, mobile-first. Pages:
+* Home: featured drop/collection, “new works”, editorial sections.
+* Drop/Collection: hero + countdown + grid + sold-out states.
+* Artwork detail: zoom gallery, dimensions, medium, year, authenticity info, shipping estimate, add-to-cart.
+* Search & filters: price, size (height/width ranges), medium, style tags, availability, color tags.
+* Cart + Checkout: shipping, tax, discount codes, payment.
+* Account (optional): orders, addresses, wishlist.
+* Static pages: About, Contact, Shipping/Returns, Privacy, Terms.
+3) Admin panel (must be excellent)
+Admin-only dashboard with:
+* Create/edit artworks (all fields below)
+* Upload/manage images (reorder, set cover, generate thumbnails)
+* Create/schedule drops (start/end time, featured drop, countdown behavior)
+* Manage inventory & sold-out logic
+* Order management (status updates, shipping labels/tracking, refunds)
+* CMS blocks for homepage + editorial sections (rich text + images)
+* Customer emails / drop waitlist export
+* Audit log of admin actions
+4) Artwork requirements (painting-specific)
+Each artwork supports:
+* Title, description, year
+* Type: original painting / limited print / open edition
+* Medium (oil, acrylic, watercolor, mixed), surface (canvas/paper/wood), style tags
+* Dimensions: height, width, depth + unit (in/cm)
+* Framed/unframed + frame details (optional)
+* Weight + packaging notes
+* Inventory rules:
+    * Original: qty = 1
+    * Limited print: edition size + remaining quantity
+    * Open edition: unlimited (or admin-defined cap)
+* Pricing:
+    * price, compare-at price, currency
+    * optional “installment” plan (define policy clearly)
+* Authenticity:
+    * certificate of authenticity (PDF upload)
+    * provenance notes (optional)
+* Shipping:
+    * shipping class (small/medium/oversize)
+    * insurance required toggle
+    * local pickup option toggle
+Media:
+* multiple images, optional video
+* automatic compression + thumbnails + CDN delivery
+5) Drops/collections (core feature)
+* Admin can schedule a drop with start time (and optional end time).
+* Before drop: show countdown; lock purchasing until drop opens.
+* During drop: allow purchase; update inventory in real-time.
+* Inventory decrement must be atomic (no oversell).
+* Sold-out state and optional waitlist signup (email capture).
+6) Payments, orders, shipping, tax
+* Payments: Stripe Checkout or Payment Intents with Apple Pay/Google Pay.
+* Stripe webhooks: verified signatures + idempotency.
+* Orders: pending, paid, processing, shipped, delivered, canceled, refunded, returned.
+* Refunds: full/partial from admin panel.
+* Shipping calculation:
+    * rules based on size/weight/shipping class + destination
+    * allow manual override for oversize pieces
+* Taxes: integrate Stripe Tax (preferred) or a tax provider.
+Emails:
+* order confirmation
+* shipping/tracking email
+* drop waitlist notify (manual or scheduled)
